@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
@@ -30,6 +29,112 @@ const Index = () => {
       icon: <Users className="h-6 w-6 text-red-600" />,
       title: "Scale to Millions",
       description: "Handle millions of concurrent users without breaking a sweat"
+    }
+  ];
+
+  const features = [
+    {
+      icon: <Shield className="h-6 w-6 text-blue-600" />,
+      title: "Strong Consistency",
+      description: "Guaranteed data consistency across all operations - no race conditions or data corruption"
+    },
+    {
+      icon: <Zap className="h-6 w-6 text-green-600" />,
+      title: "Stateful Compute",
+      description: "Keep data in memory between requests for lightning-fast access and complex operations"
+    },
+    {
+      icon: <Users className="h-6 w-6 text-purple-600" />,
+      title: "Real-time Coordination",
+      description: "Enable multiple users to collaborate in real-time with automatic conflict resolution"
+    },
+    {
+      icon: <DollarSign className="h-6 w-6 text-orange-600" />,
+      title: "Automatic Scaling",
+      description: "Scale from zero to millions of objects instantly based on demand"
+    },
+    {
+      icon: <Clock className="h-6 w-6 text-red-600" />,
+      title: "Global Distribution",
+      description: "Automatically distributed worldwide for lowest latency to your users"
+    }
+  ];
+
+  const workerComparison = [
+    {
+      aspect: "State Management",
+      worker: "Stateless - no memory between requests",
+      durableObject: "Stateful - maintains data in memory",
+      advantage: "durable"
+    },
+    {
+      aspect: "Data Consistency",
+      worker: "No guarantees across multiple instances",
+      durableObject: "Strong consistency guaranteed",
+      advantage: "durable"
+    },
+    {
+      aspect: "Real-time Features",
+      worker: "Limited - requires external coordination",
+      durableObject: "Native support for WebSockets & real-time",
+      advantage: "durable"
+    },
+    {
+      aspect: "Scaling Model",
+      worker: "Unlimited parallel execution",
+      durableObject: "One instance per object globally",
+      advantage: "worker"
+    },
+    {
+      aspect: "Use Case",
+      worker: "API endpoints, transformations, routing",
+      durableObject: "Chat, gaming, collaboration, counters",
+      advantage: "both"
+    },
+    {
+      aspect: "Cold Start",
+      worker: "Extremely fast (< 1ms)",
+      durableObject: "Fast but slightly slower due to state",
+      advantage: "worker"
+    }
+  ];
+
+  const decisionTree = [
+    {
+      question: "Do you need to maintain state between requests?",
+      workerAnswer: "No - Each request is independent",
+      durableAnswer: "Yes - Need to remember data across requests",
+      examples: {
+        worker: "API transformations, content delivery, routing",
+        durable: "User sessions, shopping carts, game state"
+      }
+    },
+    {
+      question: "Do you need real-time collaboration features?",
+      workerAnswer: "No - Simple request/response pattern",
+      durableAnswer: "Yes - Multiple users interacting simultaneously",
+      examples: {
+        worker: "Static site generation, image optimization",
+        durable: "Live chat, collaborative editing, multiplayer games"
+      }
+    },
+    {
+      question: "Do you need strong data consistency?",
+      workerAnswer: "No - Eventually consistent is fine",
+      durableAnswer: "Yes - Data must be immediately consistent",
+      examples: {
+        worker: "Analytics collection, logging, caching",
+        durable: "Financial transactions, voting systems, inventory"
+      }
+    },
+    {
+      question: "How many concurrent users per 'thing'?",
+      workerAnswer: "Many users, independent operations",
+      durableAnswer: "Many users, shared state/coordination",
+      examples: {
+        worker: "Public API endpoints, CDN functions",
+        durable: "Chat rooms, game lobbies, auction systems"
+      }
     }
   ];
 
@@ -108,6 +213,141 @@ const Index = () => {
             </Card>
           ))}
         </div>
+
+        {/* Features Section */}
+        <Card className="bg-white/90 backdrop-blur border-0 shadow-xl mb-16">
+          <CardHeader className="text-center pb-8">
+            <CardTitle className="text-3xl font-bold text-gray-900">
+              Durable Objects Features
+            </CardTitle>
+            <CardDescription className="text-lg text-gray-600">
+              Powerful capabilities that enable next-generation applications
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {features.map((feature, index) => (
+                <div key={index} className="p-6 bg-gradient-to-br from-white/80 to-gray-50/80 rounded-lg border border-gray-200">
+                  <div className="flex items-center gap-3 mb-3">
+                    {feature.icon}
+                    <h3 className="font-semibold text-gray-900">{feature.title}</h3>
+                  </div>
+                  <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Workers vs Durable Objects Comparison */}
+        <Card className="bg-white/90 backdrop-blur border-0 shadow-xl mb-16">
+          <CardHeader className="text-center pb-8">
+            <CardTitle className="text-3xl font-bold text-gray-900">
+              Workers vs Durable Objects
+            </CardTitle>
+            <CardDescription className="text-lg text-gray-600">
+              Understanding when to use each technology
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b-2 border-gray-200">
+                    <th className="text-left py-4 px-4 font-semibold text-gray-900">Aspect</th>
+                    <th className="text-left py-4 px-4 font-semibold text-blue-600">Cloudflare Workers</th>
+                    <th className="text-left py-4 px-4 font-semibold text-purple-600">Durable Objects</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {workerComparison.map((row, index) => (
+                    <tr key={index} className="border-b border-gray-100 hover:bg-gray-50/50">
+                      <td className="py-4 px-4 font-medium text-gray-900">{row.aspect}</td>
+                      <td className={`py-4 px-4 text-sm ${row.advantage === 'worker' ? 'bg-blue-50 font-medium text-blue-800' : 'text-gray-600'} rounded-l`}>
+                        {row.worker}
+                      </td>
+                      <td className={`py-4 px-4 text-sm ${row.advantage === 'durable' ? 'bg-purple-50 font-medium text-purple-800' : 'text-gray-600'} rounded-r`}>
+                        {row.durableObject}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Decision Tree */}
+        <Card className="bg-white/90 backdrop-blur border-0 shadow-xl mb-16">
+          <CardHeader className="text-center pb-8">
+            <CardTitle className="text-3xl font-bold text-gray-900">
+              Decision Tree: Which Should You Choose?
+            </CardTitle>
+            <CardDescription className="text-lg text-gray-600">
+              Ask these questions to guide your customers to the right solution
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-8">
+              {decisionTree.map((decision, index) => (
+                <div key={index} className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-lg p-6 border border-gray-200">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
+                    <span className="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">
+                      {index + 1}
+                    </span>
+                    {decision.question}
+                  </h3>
+                  
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {/* Workers Side */}
+                    <div className="bg-blue-100 rounded-lg p-4 border-l-4 border-blue-600">
+                      <h4 className="font-semibold text-blue-800 mb-2 flex items-center gap-2">
+                        <Zap className="h-4 w-4" />
+                        Choose Workers
+                      </h4>
+                      <p className="text-blue-700 mb-3">{decision.workerAnswer}</p>
+                      <div className="text-sm">
+                        <span className="font-medium text-blue-800">Examples: </span>
+                        <span className="text-blue-600">{decision.examples.worker}</span>
+                      </div>
+                    </div>
+
+                    {/* Durable Objects Side */}
+                    <div className="bg-purple-100 rounded-lg p-4 border-l-4 border-purple-600">
+                      <h4 className="font-semibold text-purple-800 mb-2 flex items-center gap-2">
+                        <Shield className="h-4 w-4" />
+                        Choose Durable Objects
+                      </h4>
+                      <p className="text-purple-700 mb-3">{decision.durableAnswer}</p>
+                      <div className="text-sm">
+                        <span className="font-medium text-purple-800">Examples: </span>
+                        <span className="text-purple-600">{decision.examples.durable}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            {/* Summary */}
+            <div className="mt-8 p-6 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200">
+              <h3 className="text-lg font-semibold text-green-800 mb-3 flex items-center gap-2">
+                <CheckCircle className="h-5 w-5" />
+                Quick Summary
+              </h3>
+              <div className="grid md:grid-cols-2 gap-4 text-sm">
+                <div>
+                  <span className="font-medium text-green-800">Use Workers for: </span>
+                  <span className="text-green-700">Stateless operations, APIs, transformations, high-scale parallel processing</span>
+                </div>
+                <div>
+                  <span className="font-medium text-green-800">Use Durable Objects for: </span>
+                  <span className="text-green-700">Stateful applications, real-time features, data consistency, user coordination</span>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* FAQ Section */}
         <Card className="bg-white/90 backdrop-blur border-0 shadow-xl">
