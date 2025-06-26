@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { TrendingUp, DollarSign, CheckCircle, AlertTriangle, Shield } from "lucide-react";
 
@@ -18,6 +17,21 @@ const CompetitiveLandscape = () => {
       complexity: "Very High",
       timeToMarket: "6-12 months",
       salesOpportunity: "High - Clear cost and complexity reduction"
+    },
+    {
+      category: "WebSocket-Based Real-time Solutions",
+      currentStack: ["Node.js + Socket.io", "WebSocket servers + Load balancers", "Custom WebSocket implementations"],
+      painPoints: [
+        "Connection management complexity at scale",
+        "Manual handling of reconnections and failovers",
+        "State synchronization challenges across connections",
+        "Load balancing WebSocket connections is difficult",
+        "No built-in persistence or state recovery"
+      ],
+      monthlyCost: "$10K-80K+",
+      complexity: "High",
+      timeToMarket: "4-8 months",
+      salesOpportunity: "High - Eliminate connection management overhead"
     },
     {
       category: "Real-time Platforms",
@@ -243,10 +257,14 @@ const CompetitiveLandscape = () => {
             <Shield className="h-5 w-5" />
             Key Competitive Advantages to Emphasize
           </h3>
-          <div className="grid md:grid-cols-3 gap-4 text-sm">
+          <div className="grid md:grid-cols-4 gap-4 text-sm">
             <div className="bg-white/80 rounded p-4">
               <h4 className="font-semibold text-blue-800 mb-2">vs Traditional Databases</h4>
               <p className="text-blue-700">No separate caching layer, automatic global distribution, zero maintenance overhead</p>
+            </div>
+            <div className="bg-white/80 rounded p-4">
+              <h4 className="font-semibold text-blue-800 mb-2">vs WebSocket Solutions</h4>
+              <p className="text-blue-700">Automatic connection management, built-in state persistence, no manual failover handling</p>
             </div>
             <div className="bg-white/80 rounded p-4">
               <h4 className="font-semibold text-blue-800 mb-2">vs Real-time Platforms</h4>
