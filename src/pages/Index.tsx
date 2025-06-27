@@ -5,6 +5,7 @@ import FeaturesSection from "@/components/sales-faq/FeaturesSection";
 import CustomerSuccessStories from "@/components/sales-faq/CustomerSuccessStories";
 import BusinessUseCases from "@/components/sales-faq/BusinessUseCases";
 import WorkersComparison from "@/components/sales-faq/WorkersComparison";
+import StorageComparison from "@/components/sales-faq/StorageComparison";
 import DecisionTree from "@/components/sales-faq/DecisionTree";
 import CompetitiveLandscape from "@/components/sales-faq/CompetitiveLandscape";
 import FAQSection from "@/components/sales-faq/FAQSection";
@@ -20,6 +21,7 @@ const Index = () => {
         <CustomerSuccessStories />
         <BusinessUseCases />
         <WorkersComparison />
+        <StorageComparison />
         <DecisionTree />
         <CompetitiveLandscape />
         <FAQSection />
